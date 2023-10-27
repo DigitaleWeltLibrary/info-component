@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@mixin mq() {
+  @media (width>700px) {
+    @content;
+  }
+}
+
+main {
+  background: hsl(0, 0%, 81%);
+  padding: 0 1rem;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  .zitate {
+    padding: 3rem 0;
+    @include mq {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      max-width: 1300px;
+    }
+    .card {
+      margin: 0 0 1rem;
+      border-radius: 2rem;
+      padding: 1.5rem;
+      color: hsl(0, 0%, 81%);
+      @include mq {
+        &.side {
+          grid-row-start: 1;
+          grid-row-end: 3;
+          grid-column-start: 4;
+        }
+      }
+      &.lila {
+        background: hsl(263, 55%, 52%);
+        background-image: url("../images/bg-pattern-quotation.svg");
+        background-repeat: no-repeat;
+        background-size: 150px;
+        background-position: 80% 5px;
+        @include mq {
+          grid-column: 1 / span 2;
+        }
+
+        h2 {
+          color: #fff;
+        }
+      }
+      &.grau {
+        background: hsl(217, 19%, 35%);
+        h2 {
+          color: #fff;
+        }
+      }
+      &.schwarz {
+        background: hsl(219, 29%, 14%);
+        @include mq {
+          grid-column: span 2;
+        }
+        h2 {
+          color: #fff;
+        }
+      }
+      &.weis {
+        background: #fff;
+
+        div p:nth-child(1) {
+          color: hsl(217, 19%, 35%);
+        }
+      }
+
+      &-header {
+        display: flex;
+        align-items: center;
+        margin: 0 0 1rem;
+        img {
+          object-fit: contain;
+          border: 2px solid #fff;
+          border-radius: 2rem;
+        }
+        div {
+          margin: 0 0 0 1rem;
+          p {
+            &:nth-child(1) {
+              color: #fff;
+            }
+            &:nth-child(2) {
+              color: hsl(0, 0%, 81%);
+            }
+          }
+        }
+      }
+      h2 {
+        color: hsl(219, 29%, 14%);
+        margin: 1.5rem 0;
+      }
+      p:not(div > p) {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  a {
+    color: hsl(228, 45%, 44%);
+  }
+}
